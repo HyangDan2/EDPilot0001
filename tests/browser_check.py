@@ -52,8 +52,8 @@ try:
                     width,
                     path,
                 )
-                expect(page.locator('.hq-link')).to_have_attribute(
-                    'href', 'https://hyangdan2.github.io/'
+                expect(page.locator('.hub-link')).to_have_attribute(
+                    'href', 'https://hyangdan2.github.io/EduHub/#entry-edpilot0001'
                 )
                 if path.startswith('labs/'):
                     expect(page.locator('#mode')).to_contain_text('실시간')

@@ -114,7 +114,7 @@ LABS.append(
 
 
 def header(prefix):
-    return f'''<a class="skip" href="#content">본문으로 건너뛰기</a><header class="site-header"><div class="wrap header-inner"><a class="brand" href="{prefix}main.html" aria-label="HD2Lab 홈"><i aria-hidden="true"></i>HD2Lab<small>LEARNING ARCHIVE</small></a><nav class="site-nav" aria-label="주 메뉴"><a href="{prefix}main.html#curriculum">학습 목차</a><a href="{prefix}main.html#labs">실험실</a><a href="{prefix}appendix/references.html">참고자료</a><a class="hq-link" href="https://hyangdan2.github.io/">← Web-HQ</a></nav><div class="preferences"><button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" hidden>다크 모드</button></div></div></header>'''
+    return f'''<a class="skip" href="#content">본문으로 건너뛰기</a><header class="site-header"><div class="wrap header-inner"><a class="brand" href="{prefix}main.html" aria-label="HD2Lab 홈"><i aria-hidden="true"></i>HD2Lab<small>LEARNING ARCHIVE</small></a><nav class="site-nav" aria-label="주 메뉴"><a href="{prefix}main.html#curriculum">학습 목차</a><a href="{prefix}main.html#labs">실험실</a><a href="{prefix}appendix/references.html">참고자료</a><a class="hub-link" href="https://hyangdan2.github.io/EduHub/#entry-edpilot0001">← EduHub</a></nav><div class="preferences"><button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" hidden>다크 모드</button></div></div></header>'''
 
 
 def page(

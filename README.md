@@ -6,7 +6,7 @@
 모든 실험 데이터는 합성이며 방문자에게 서버 API나 외부 라이브러리가 필요하지 않습니다.
 
 - [학습 사이트](https://hyangdan2.github.io/EDPilot0001/)
-- [Web-HQ](https://hyangdan2.github.io/)
+- [EduHub](https://hyangdan2.github.io/EduHub/) — 상위 학습 허브
 - [교육자료 작성 Harness Guide](https://github.com/HyangDan2/hyangdan2.github.io/blob/main/docs/education-harness-guide.md)
 - [교육과정 구성](docs/curriculum-map.md)
 
@@ -48,3 +48,7 @@ python -m http.server 8000 --directory output/site
 
 기존 MLStudy를 한국어 전용으로 분리한 프로젝트입니다. 테마 전환, 인쇄,
 반응형 레이아웃과 브라우저 계산 기능을 유지합니다. 언어 선택이나 번역 생성 과정은 없습니다.
+
+## 상위 허브 이동
+
+탐색 구조는 EDPilot0001 ↔ EduHub → Web-HQ입니다. 공통 헤더의 `← EduHub`는 허브의 해당 교육과정 카드로 복귀합니다. Web-HQ 이동은 EduHub에서 제공합니다. `tools/render_site.py`를 수정하고 빌드하여 전체 페이지에 반영합니다. 배포 후 공개 URL에서 왕복을 검증합니다. 로컬 왕복은 형제 EduHub의 미리보기 서버에서 확인합니다.

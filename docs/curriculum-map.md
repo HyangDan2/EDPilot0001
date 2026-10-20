@@ -24,3 +24,7 @@ Notebook을 다운로드할 수 있습니다. 모든 데이터는 합성 데이�
 `python3 tools/enrich_site.py`는 심화 결과, 그림과 Notebook을 갱신합니다.
 전체 작성·검증·배포 절차는 Web-HQ의
 [교육자료 작성 Harness Guide](https://github.com/HyangDan2/hyangdan2.github.io/blob/main/docs/education-harness-guide.md)를 따릅니다.
+
+## 탐색 계약
+
+상위 이동은 EDPilot0001 ↔ EduHub → Web-HQ입니다. 복귀 연결은 이 저장소의 [EduHub 리턴 가이드](EDUHUB_RETURN_GUIDE.md)를 따릅니다. 기존 Web-HQ 작성 가이드의 직접 Web-HQ 복귀 설명은 이 계약으로 대체합니다. 공개 배포는 별도 단계입니다.
