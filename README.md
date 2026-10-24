@@ -26,23 +26,25 @@ npm run test:browser
 python tests/advanced_verify.py --notebook
 ```
 
-`npm run build`는 한국어 원본에서 페이지와 기본 예제를 생성하고
-`output/site/` 및 `output/edpilot0001-static.zip`을 만듭니다.
+`npm run build`는 한국어 원본에서 페이지와 기본 예제를 생성한 뒤 Vite로 빌드하여
+`dist/`와 `output/edpilot0001-static.zip`을 만듭니다. Vite 입력은 루트와
+`chapters/`, `labs/`, `appendix/` 아래의 HTML을 자동으로 검색하며 페이지가 17개인지 확인합니다.
 수치 실험 원본을 변경했다면 빌드 전에 `python tools/enrich_site.py`를 실행하세요.
 HTML 생성은 번역 데이터나 Web-HQ 파일을 읽지 않습니다.
 
 ```sh
-python -m http.server 8000 --directory output/site
+npm run preview
 ```
 
-`http://localhost:8000/`에서 결과물을 확인할 수 있습니다.
+`http://localhost:4173/EDPilot0001/`에서 결과물을 확인할 수 있습니다. Pages와 같은
+프로젝트 경로를 사용하므로 상대 링크와 자산 주소도 배포 기준으로 동작합니다.
 수정할 원본은 `tools/content*.py`, `tools/render_site.py`, `assets/js/`, `downloads/`입니다.
 생성된 HTML과 기본 예제를 직접 고치지 마세요.
 
 ## 배포
 
 `main`에 push하면 GitHub Actions가 빌드, 수학 검증, 링크 검사 및 브라우저 검증을
-통과한 `output/site/`만 GitHub Pages에 게시합니다. 수동 실행도 가능합니다.
+통과한 `dist/`만 GitHub Pages에 게시합니다. 수동 실행도 가능합니다.
 저장소 Settings → Pages의 배포 소스는 GitHub Actions입니다.
 작성 도구, 테스트, 내부 문서는 공개 사이트 산출물에서 제외합니다.
 

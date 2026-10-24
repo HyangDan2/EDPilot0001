@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Package only public Korean runtime files, with a SHA-256 manifest."""
+"""Add public downloads and a SHA-256 manifest to the Vite output."""
 
 from pathlib import Path
 import hashlib
@@ -8,29 +8,24 @@ import shutil
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / 'output'
-DEST = OUT / 'site'
+OUT = ROOT / 'dist'
+DEST = OUT
 
 
 def package():
-    files = [ROOT / 'index.html', ROOT / 'main.html', ROOT / 'assets/favicon.svg']
+    # Vite processes HTML, styles, scripts, and referenced SVG assets. Copy the
+    # original downloadable files too, retaining the URLs used by page links.
+    files = []
     for folder, pattern in [
-        ('chapters', '*.html'),
-        ('labs', '*.html'),
-        ('appendix', '*.html'),
         ('assets/css', '*.css'),
         ('assets/js', '*.js'),
         ('assets/images/advanced', '*.svg'),
+        ('assets', '*.svg'),
         ('downloads', '*.py'),
         ('downloads', '*.ipynb'),
         ('downloads', '*.json'),
     ]:
         files.extend(sorted((ROOT / folder).glob(pattern)))
-    expected = {str(p.relative_to(ROOT)) for p in files} | {'.nojekyll', 'manifest.json'}
-    if DEST.exists():
-        unexpected = {str(p.relative_to(DEST)) for p in DEST.rglob('*') if p.is_file()} - expected
-        if unexpected:
-            raise SystemExit('Review unexpected output files before packaging: ' + str(unexpected))
     DEST.mkdir(parents=True, exist_ok=True)
     manifest = {}
     for source in files:
@@ -44,7 +39,9 @@ def package():
         json.dumps({'project': 'EDPilot0001', 'language': 'ko', 'files_sha256': manifest}, indent=2)
         + '\n'
     )
-    archive = OUT / 'edpilot0001-static.zip'
+    archive = ROOT / 'output' / 'edpilot0001-static.zip'
+    archive.parent.mkdir(parents=True, exist_ok=True)
+    expected = {str(p.relative_to(DEST)) for p in DEST.rglob('*') if p.is_file()}
     with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED) as z:
         for name in sorted(expected):
             z.write(DEST / name, name)

@@ -14,7 +14,9 @@ def format_sources(check=False):
         p
         for p in ROOT.rglob('*')
         if p.is_file()
-        and not {'node_modules', '__pycache__', '.git', '.venv', 'output'}.intersection(p.parts)
+        and not {'node_modules', '__pycache__', '.git', '.venv', 'output', 'dist'}.intersection(
+            p.parts
+        )
     )
     web = [
         str(p)

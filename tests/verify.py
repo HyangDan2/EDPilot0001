@@ -48,8 +48,11 @@ for path, parser in pages.items():
         u = urlsplit(link)
         if u.scheme or u.netloc:
             continue
-        assert not u.path.startswith('/'), (path, link)
-        target = (path.parent / unquote(u.path)).resolve() if u.path else path
+        if u.path.startswith('/EDPilot0001/') and path.is_relative_to(ROOT / 'dist'):
+            target = (ROOT / 'dist' / unquote(u.path.removeprefix('/EDPilot0001/'))).resolve()
+        else:
+            assert not u.path.startswith('/'), (path, link)
+            target = (path.parent / unquote(u.path)).resolve() if u.path else path
         assert target.exists(), (path, link)
         if u.fragment and target in pages:
             assert unquote(u.fragment) in pages[target].ids, (path, link)

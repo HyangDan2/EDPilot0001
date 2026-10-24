@@ -4,12 +4,14 @@
   "scripts": {
     "format": "python3 tools/format_sources.py",
     "format:check": "python3 tools/format_sources.py --check",
-    "build": "python3 tools/render_site.py && python3 tools/format_sources.py && python3 tools/package_site.py",
+    "build": "python3 tools/render_site.py && python3 tools/format_sources.py && vite build && python3 tools/package_site.py",
+    "preview": "vite preview --host 0.0.0.0",
     "test": "node tests/math.test.js && node tests/svm.test.js && python3 tests/verify.py && python3 tests/advanced_verify.py",
     "test:browser": "python3 tests/browser_check.py"
   },
   "devDependencies": {
+    "js-beautify": "1.15.4",
     "prettier": "3.6.2",
-    "js-beautify": "1.15.4"
+    "vite": "^8.3.5"
   }
 }
